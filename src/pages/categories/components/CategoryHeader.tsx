@@ -9,7 +9,7 @@ export default function CategoryHeader({
     >
       {showMore && (
         <div className="absolute bottom-4 right-4">
-          <button className="rounded-full bg-black px-4 py-1 text-white font-bold">
+          <button className="rounded-full bg-red-400 px-4 py-1 text-white font-bold hover:bg-red-300 transition duration-300">
             Ver más
           </button>
         </div>

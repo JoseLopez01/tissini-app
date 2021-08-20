@@ -3,26 +3,6 @@ import Slider, { Settings } from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-function PrevArrow({ className, style, onClick }: ArrowProps) {
-  return (
-    <div
-      className={`${className} prev-arrow`}
-      style={{ ...style, display: 'block' }}
-      onClick={onClick}
-    ></div>
-  );
-}
-
-function NextArrow({ className, style, onClick }: ArrowProps) {
-  return (
-    <div
-      className={`${className} next-arrow`}
-      style={{ ...style, display: 'block' }}
-      onClick={onClick}
-    ></div>
-  );
-}
-
 export default function CategorySlider({ images }: CategorySliderProps) {
   const settings: Settings = {
     dots: true,
@@ -31,8 +11,6 @@ export default function CategorySlider({ images }: CategorySliderProps) {
     slidesToScroll: 1,
     slidesToShow: 1,
     arrows: true,
-    prevArrow: <PrevArrow />,
-    nextArrow: <NextArrow />,
     centerMode: true,
     centerPadding: '60px',
   };
@@ -53,10 +31,4 @@ export default function CategorySlider({ images }: CategorySliderProps) {
 
 interface CategorySliderProps {
   images: string[];
-}
-
-interface ArrowProps {
-  className?: string;
-  style?: any;
-  onClick?: any;
 }

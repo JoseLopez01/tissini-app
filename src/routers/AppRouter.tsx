@@ -11,7 +11,7 @@ export default function AppRouter() {
       <div>
         <Switch>
           <PublicRouter exact path="/login" isAuthenticated={false} component={Login} />
-          <PrivateRouter exact path="/" isAuthenticated={true} component={LayoutRouter} />
+          <PrivateRouter path="/" isAuthenticated={true} component={LayoutRouter} />
         </Switch>
       </div>
     </Router>

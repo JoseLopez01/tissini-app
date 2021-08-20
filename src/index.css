@@ -2,14 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-.next-arrow::before {
+.next-arrow::before, .slick-next::before, .slick-next {
   font-family: "Font Awesome 5 Free" !important;
   font-weight: 900 !important;
   content: '\f054' !important;
+  color: #f06292 !important;
 }
 
-.prev-arrow::before {
+.prev-arrow::before, .slick-prev::before, .slick-prev {
   font-family: "Font Awesome 5 Free" !important;
   font-weight: 900 !important;
   content: '\f053' !important;
+  color: #f06292 !important;
 }

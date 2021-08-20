@@ -3,6 +3,6 @@ import React from 'react';
 export interface RouterProps {
   isAuthenticated: boolean;
   component: React.ComponentType;
-  exact: boolean;
+  exact?: boolean;
   path: string;
 }
