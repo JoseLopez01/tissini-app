@@ -7,6 +7,12 @@ export interface Category {
 }
 
 export interface Section {
+  image: string;
+  name: string;
+  products: Product[];
+}
+
+export interface Product {
   catalog_id: number;
   categories: Category;
   id: number;

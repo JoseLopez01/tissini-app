@@ -6,6 +6,7 @@ import {
 } from '../../core/store/category/category.actions';
 import CategoryHeader from './components/CategoryHeader';
 import CategorySlider from './components/CategorySlider';
+import SectionsList from './components/SectionsList';
 
 export default function Categories() {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ export default function Categories() {
       <div className="my-2">
         <CategorySlider images={headerCategories} />
       </div>
+      <SectionsList />
     </div>
   );
 }
