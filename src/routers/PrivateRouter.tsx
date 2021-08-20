@@ -1,5 +1,6 @@
-import { Redirect, Route } from 'react-router-dom'
-import { RouterProps } from '../core/models/router.model'
+import { Redirect, Route } from 'react-router-dom';
+
+import { RouterProps } from '../core/models';
 
 export default function PrivateRouter({
   isAuthenticated,
@@ -10,12 +11,8 @@ export default function PrivateRouter({
     <Route
       {...rest}
       component={(props: any) =>
-        !isAuthenticated ? (
-          <Redirect to="/login" />
-        ) : (
-          <Component {...props} />
-        )
+        !isAuthenticated ? <Redirect to="/login" /> : <Component {...props} />
       }
     />
-  )
+  );
 }
