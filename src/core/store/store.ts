@@ -17,4 +17,9 @@ const rootStore = combineReducers({
   category: categoriesReducer,
 });
 
-export const store = createStore(rootStore, composeEnhancers(applyMiddleware(thunk)));
+export const store = createStore(
+  rootStore,
+  composeEnhancers(applyMiddleware(thunk))
+);
+export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof store.getState>;
