@@ -4,6 +4,7 @@ import { RouterProps } from '../core/models';
 
 export default function PrivateRouter({
   isAuthenticated,
+  exact = false,
   component: Component,
   ...rest
 }: RouterProps) {
