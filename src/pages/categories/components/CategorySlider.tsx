@@ -23,7 +23,7 @@ function NextArrow({ className, style, onClick }: ArrowProps) {
   );
 }
 
-export default function CategorySlider({ images, rows, cols }: CategorySliderProps) {
+export default function CategorySlider({ images }: CategorySliderProps) {
   const settings: Settings = {
     dots: true,
     infinite: true,
@@ -53,8 +53,6 @@ export default function CategorySlider({ images, rows, cols }: CategorySliderPro
 
 interface CategorySliderProps {
   images: string[];
-  rows?: number;
-  cols?: number;
 }
 
 interface ArrowProps {

@@ -1,21 +1,12 @@
 import { useSelector } from 'react-redux';
 
-import CategoryHeader from './CategoryHeader';
-
 import { BASE_URL } from '../../../core/constants';
+import CategoryHeader from './CategoryHeader';
 import { RootState } from '../../../core/store/store';
-import { useEffect, useState } from 'react';
-import CategorySlider from './CategorySlider';
+import SectionSlider from './SectionSlider';
 
 export default function SectionsList() {
   const { sections } = useSelector((state: RootState) => state.category);
-
-  const [images, setImages] = useState<string[]>([]);
-
-  useEffect(() => {
-    const products_images = sections.map(section => section.products).flat().map(product => `${BASE_URL}/${product.image.url}`); 
-    setImages(products_images);
-  }, [sections]);
 
   return (
     <>
@@ -26,7 +17,7 @@ export default function SectionsList() {
             showMore={false}
           />
           <div className="my-2">
-            <CategorySlider images={images} />
+            <SectionSlider products={section.products} key={section.name} />
           </div>
         </div>
       ))}

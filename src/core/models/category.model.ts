@@ -3,6 +3,7 @@ export interface Category {
   categories?: Category[];
   category: string;
   image: string;
+  id: number;
   name: string;
 }
 

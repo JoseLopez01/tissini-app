@@ -4,11 +4,11 @@ export default function CategoryHeader({
 }: CategoryHeaderProps) {
   return (
     <div
-      className="w-full h-40 bg-cover relative"
+      className="w-full h-56 bg-contain relative bg-no-repeat bg-center"
       style={{ backgroundImage: `url(${image})` }}
     >
       {showMore && (
-        <div className="absolute bottom-1 right-1 p-2">
+        <div className="absolute bottom-4 right-4">
           <button className="rounded-full bg-black px-4 py-1 text-white font-bold">
             Ver más
           </button>
