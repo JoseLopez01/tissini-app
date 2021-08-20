@@ -1,10 +1,25 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { fecthCategories, fecthSections } from '../../core/store/category/category.actions';
+import {
+  fecthCategories,
+  fecthSections,
+} from '../../core/store/category/category.actions';
 import CategoryHeader from './components/CategoryHeader';
+import CategorySlider from './components/CategorySlider';
 
 export default function Categories() {
   const dispatch = useDispatch();
+
+  const headerCategories = [
+    'https://v3.tissini.app/img/categories/multivendor/jeans-prominent.jpg',
+    'https://v3.tissini.app/img/categories/multivendor/fajas-prominent.jpg',
+    'https://v3.tissini.app/img/categories/multivendor/blusas-prominent.jpg',
+    'https://v3.tissini.app/img/categories/multivendor/zapatos-prominent.jpg',
+    'https://v3.tissini.app/img/categories/multivendor/ropa-interior-prominent.jpg',
+    'https://v3.tissini.app/img/categories/multivendor/seamless-prominent.jpg',
+    'https://v3.tissini.app/img/categories/multivendor/concord-ozzy-prominent.jpg',
+    'https://v3.tissini.app/img/categories/multivendor/tapabocas-prominent.jpg',
+  ];
 
   useEffect(() => {
     dispatch(fecthCategories());
@@ -17,6 +32,9 @@ export default function Categories() {
         image="https://mitienda.moda/img/productos-de-entrega-inmediata.9ad72bec.jpg"
         showMore
       />
+      <div className="my-2">
+        <CategorySlider images={headerCategories} />
+      </div>
     </div>
   );
 }
