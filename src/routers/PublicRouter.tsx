@@ -1,5 +1,6 @@
 import { Route, Redirect } from 'react-router-dom';
-import { RouterProps } from '../core/models/router.model';
+
+import { RouterProps } from '../core/models';
 
 export default function PublicRouter({
   isAuthenticated,
