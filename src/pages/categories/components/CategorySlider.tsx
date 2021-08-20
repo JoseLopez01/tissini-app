@@ -34,7 +34,7 @@ export default function CategorySlider({ images }: CategorySliderProps) {
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
     centerMode: true,
-    centerPadding: '60px'
+    centerPadding: '60px',
   };
 
   return (
