@@ -1,5 +1,6 @@
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
+import { authReducer } from './auth/auth.reducer';
 import { cartReducer } from './cart/cart.reducer';
 import { categoriesReducer } from './category/category.reducer';
 import { uiReducer } from './ui/ui.reducer';
@@ -19,6 +20,7 @@ const rootStore = combineReducers({
   category: categoriesReducer,
   cart: cartReducer,
   ui: uiReducer,
+  auth: authReducer,
 });
 
 export const store = createStore(
