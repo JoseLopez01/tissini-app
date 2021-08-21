@@ -39,3 +39,9 @@ export interface Variant {
   size: string;
   sku: string;
 }
+
+export interface CartItem {
+  product: Product;
+  variant: Variant;
+  quantity: number;
+}

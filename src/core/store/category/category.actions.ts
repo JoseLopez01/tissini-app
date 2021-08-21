@@ -1,4 +1,4 @@
-import { ActionBase, Category, Section } from '../../models';
+import { ActionBase, Category, Product, Section } from '../../models';
 import { getCategories, getSections } from '../../services/category-service';
 import { AppDispatch } from '../store';
 
@@ -6,7 +6,8 @@ export type CATEGORY_ACTION_TYPES =
   | '[CATEGORY] Load Categories'
   | '[CATEGORY] Load Sections'
   | '[CATEGORY] Fetch Categories'
-  | '[CATEGORY] Fetch Sections';
+  | '[CATEGORY] Fetch Sections'
+  | '[CATEGORY] Set Active Product';
 
 export function loadCategories(
   categories: Category[]
@@ -23,6 +24,15 @@ export function loadSections(
   return {
     type: '[CATEGORY] Load Sections',
     payload: sections,
+  };
+}
+
+export function setActiveProduct(
+  product: Product
+): ActionBase<CATEGORY_ACTION_TYPES, Product> {
+  return {
+    type: '[CATEGORY] Set Active Product',
+    payload: product,
   };
 }
 

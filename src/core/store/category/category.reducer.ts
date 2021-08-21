@@ -1,19 +1,21 @@
-import { ActionBase, Category, Section } from '../../models';
+import { ActionBase, Category, Product, Section } from '../../models';
 import { CATEGORY_ACTION_TYPES } from './category.actions';
 
 export interface CategoryState {
   categories: Category[];
   sections: Section[];
+  activeProduct: Product | null;
 }
 
 const initialState: CategoryState = {
   categories: [],
   sections: [],
+  activeProduct: null,
 };
 
 export function categoriesReducer(
   state = initialState,
-  action: ActionBase<CATEGORY_ACTION_TYPES, any[]>
+  action: ActionBase<CATEGORY_ACTION_TYPES, any>
 ): CategoryState {
   switch (action.type) {
     case '[CATEGORY] Load Categories':
@@ -25,6 +27,11 @@ export function categoriesReducer(
       return {
         ...state,
         sections: action.payload,
+      };
+    case '[CATEGORY] Set Active Product':
+      return {
+        ...state,
+        activeProduct: action.payload,
       };
     default:
       return state;
