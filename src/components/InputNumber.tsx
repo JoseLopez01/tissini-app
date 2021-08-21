@@ -6,23 +6,27 @@ export default function InputNumber({
   onDecrement,
   onIncrement,
   value,
+  min = 0,
+  max = Number.MAX_SAFE_INTEGER
 }: InputNumberProps) {
   return (
-    <>
-      <button onClick={onDecrement}>
+    <div>
+      <button onClick={onDecrement} className="mx-1">
         <i className="fas fa-minus text-sm"></i>
       </button>
       <input
         type="number"
-        className="border outline-none text-center w-1/2"
+        className="border outline-none text-center w-3/6"
+        min={min}
+        max={max}
         name={name}
         value={value}
         onChange={handleOnChange}
       />
-      <button onClick={onIncrement}>
+      <button onClick={onIncrement} className="mx-1">
         <i className="fas fa-plus text-sm"></i>
       </button>
-    </>
+    </div>
   );
 }
 
@@ -32,4 +36,6 @@ interface InputNumberProps {
   onIncrement: MouseEventHandler<HTMLButtonElement>;
   onDecrement: MouseEventHandler<HTMLButtonElement>;
   value: number;
+  min?: number;
+  max: number;
 }
