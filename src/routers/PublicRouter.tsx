@@ -12,7 +12,7 @@ export default function PublicRouter({
       {...rest}
       component={(props: any) =>
         isAuthenticated ? (
-          <Redirect to="/categories" />
+          <Redirect to="/" />
         ) : (
           <Component {...props} />
         )
