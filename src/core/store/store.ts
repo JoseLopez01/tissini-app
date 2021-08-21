@@ -1,5 +1,6 @@
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
+import { cartReducer } from './cart/cart.reducer';
 import { categoriesReducer } from './category/category.reducer';
 
 declare global {
@@ -15,6 +16,7 @@ const composeEnhancers =
 
 const rootStore = combineReducers({
   category: categoriesReducer,
+  cart: cartReducer,
 });
 
 export const store = createStore(

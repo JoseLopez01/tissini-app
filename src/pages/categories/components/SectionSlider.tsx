@@ -1,6 +1,6 @@
 import Slider, { Settings } from 'react-slick';
-import { BASE_URL } from '../../../core/constants';
 import { Product } from '../../../core/models';
+import SectionSliderItem from './SectionSliderItem';
 
 export default function SectionSlider({ products }: SectionSliderProps) {
   const settings: Settings = {
@@ -17,22 +17,11 @@ export default function SectionSlider({ products }: SectionSliderProps) {
 
   return (
     <Slider {...settings}>
-      {
-        products.map(product => (
-          <div className="rounded-lg p-1" key={product.id}>
-            <img src={`${BASE_URL}/${product.image.url}`} alt={product.name} className="rounded-lg" />
-            <div className="text-lg font-bold">
-              {product.name}
-            </div>
-            <div className="uppercase text-sm">
-              {product.categories.category}
-            </div>
-            <div className="font-semibold">
-              ${product.price}
-            </div>
-          </div>
-        ))
-      }
+      {products.map((product) => (
+        <div className="rounded-lg p-1 relative" key={product.id}>
+          <SectionSliderItem product={product} />
+        </div>
+      ))}
     </Slider>
   );
 }
