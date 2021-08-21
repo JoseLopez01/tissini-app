@@ -7,11 +7,12 @@ export default function InputNumber({
   onIncrement,
   value,
   min = 0,
-  max = Number.MAX_SAFE_INTEGER
+  max = Number.MAX_SAFE_INTEGER,
+  disabled = false,
 }: InputNumberProps) {
   return (
     <div>
-      <button onClick={onDecrement} className="mx-1">
+      <button onClick={onDecrement} className="mx-1" type="button">
         <i className="fas fa-minus text-sm"></i>
       </button>
       <input
@@ -22,8 +23,9 @@ export default function InputNumber({
         name={name}
         value={value}
         onChange={handleOnChange}
+        disabled={disabled}
       />
-      <button onClick={onIncrement} className="mx-1">
+      <button onClick={onIncrement} className="mx-1" type="button">
         <i className="fas fa-plus text-sm"></i>
       </button>
     </div>
@@ -38,4 +40,5 @@ interface InputNumberProps {
   value: number;
   min?: number;
   max: number;
+  disabled?: boolean;
 }

@@ -1,4 +1,4 @@
-import { ActionBase, Product } from '../../models';
+import { ActionBase, CartItem, Product } from '../../models';
 
 export type CART_ACTION_TYPES =
   | '[CART] Add Item'
@@ -7,22 +7,20 @@ export type CART_ACTION_TYPES =
   | '[CART] Update Item';
 
 export function addItem(
-  product: Product,
-  quantity: number
-): ActionBase<CART_ACTION_TYPES, any> {
+  item: CartItem
+): ActionBase<CART_ACTION_TYPES, CartItem> {
   return {
     type: '[CART] Add Item',
-    payload: { product, quantity },
+    payload: item,
   };
 }
 
 export function updateItem(
-  id: number,
-  quantity: number
-): ActionBase<CART_ACTION_TYPES, any> {
+  item: CartItem
+): ActionBase<CART_ACTION_TYPES, CartItem> {
   return {
     type: '[CART] Update Item',
-    payload: { id, quantity },
+    payload: item,
   };
 }
 
@@ -33,9 +31,11 @@ export function removeItem(id: number): ActionBase<CART_ACTION_TYPES, number> {
   };
 }
 
-export function loadItems(): ActionBase<CART_ACTION_TYPES, any> {
+export function loadItems(
+  items: Product[]
+): ActionBase<CART_ACTION_TYPES, Product[]> {
   return {
     type: '[CART] Load Items',
-    payload: null,
+    payload: items,
   };
 }

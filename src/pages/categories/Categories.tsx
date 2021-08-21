@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Modal from 'react-modal';
 
-import { BASE_URL, customStyles, headerCategories } from '../../core/constants';
+import { BASE_URL, headerCategories } from '../../core/constants';
 import {
   fecthCategories,
   fecthSections,
@@ -11,15 +10,10 @@ import { RootState } from '../../core/store/store';
 import CategoryHeader from './components/CategoryHeader';
 import CategorySlider from './components/CategorySlider';
 import SectionsList from './components/SectionsList';
-import ProductForm from './components/ProductForm';
-import { closeModal } from '../../core/store/ui/ui.actions';
-
-Modal.setAppElement('#root');
 
 export default function Categories() {
   const dispatch = useDispatch();
   const { categories } = useSelector((state: RootState) => state.category);
-  const { showModal } = useSelector((state: RootState) => state.ui);
 
   useEffect(() => {
     dispatch(fecthCategories());
@@ -30,10 +24,6 @@ export default function Categories() {
     const category = url.split('/').pop() || '';
     const newUrl = url.slice(0, url.length - category?.length) + 'multivendor';
     return `${BASE_URL}/${newUrl}/${category}`;
-  }
-
-  function handleOnClose() {
-    dispatch(closeModal());
   }
 
   return (
@@ -56,13 +46,7 @@ export default function Categories() {
             />
           ))}
         </div>
-      </div>
-
-      <Modal style={customStyles} isOpen={showModal} onRequestClose={handleOnClose}>
-        <div>
-          <ProductForm />
-        </div>
-      </Modal>
+      </div>    
     </>
   );
 }

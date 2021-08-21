@@ -1,13 +1,18 @@
 import { ChangeEvent, FormEvent } from 'react';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { BASE_URL } from '../../../core/constants';
 import { RootState } from '../../../core/store/store';
 import InputNumber from '../../../components/InputNumber';
 import { useEffect } from 'react';
+import { addItem, updateItem } from '../../../core/store/cart/cart.actions';
+import { closeModal } from '../../../core/store/ui/ui.actions';
+import { CartItem } from '../../../core/models';
 
 export default function ProductForm() {
+  const dispatch = useDispatch();
   const { activeProduct } = useSelector((state: RootState) => state.category);
+  const { items } = useSelector((state: RootState) => state.cart);
 
   const [form, setForm] = useState({
     size: '0',
@@ -22,6 +27,7 @@ export default function ProductForm() {
     const newMax = activeProduct?.variants.find(
       (variant) => variant.size === size
     )?.quantity;
+
     if (newMax) {
       setMax(newMax);
     }
@@ -58,13 +64,36 @@ export default function ProductForm() {
     } else {
       setForm({
         ...form,
-        quantity: 1
-      })
+        quantity: 1,
+      });
     }
   }
 
   function handleOnSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (activeProduct) {
+      const variant = activeProduct.variants.find(
+        (variant) => variant.size === size
+      );
+      if (variant) {
+        const item: CartItem = {
+          product: activeProduct,
+          variant,
+          quantity,
+        };
+
+        const isOnItems = items.find(
+          ({ product }) => product.id === activeProduct.id
+        );
+        if (isOnItems) {
+          dispatch(updateItem(item));
+        } else {
+          dispatch(addItem(item));
+        }
+
+        dispatch(closeModal());
+      }
+    }
   }
 
   return (
@@ -102,10 +131,16 @@ export default function ProductForm() {
             handleOnChange={handleOnChangeQuantity}
             onDecrement={handleOnDecrement}
             onIncrement={handleOnIncrement}
+            disabled={size !== '0' ? false : true}
           />
         </div>
         <div className="col-span-4">
-          <button className="outline-none py-1 px-4 bg-red-400 w-full text-white">Agregar</button>
+          <button
+            className="outline-none py-1 px-4 bg-red-400 w-full text-white"
+            type="submit"
+          >
+            Agregar
+          </button>
         </div>
       </div>
     </form>

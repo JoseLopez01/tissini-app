@@ -1,8 +1,8 @@
-import { ActionBase, Product } from '../../models';
+import { ActionBase, CartItem } from '../../models';
 import { CART_ACTION_TYPES } from './cart.actions';
 
 export interface CartState {
-  items: Product[];
+  items: CartItem[];
 }
 
 const initialState: CartState = {
@@ -22,12 +22,24 @@ export function cartReducer(
     case '[CART] Remove Item':
       return {
         ...state,
-        items: state.items.filter((item) => item.id !== action.payload),
+        items: state.items.filter(
+          ({ product }) => product.id !== action.payload
+        ),
       };
     case '[CART] Load Items':
       return {
         ...state,
         items: action.payload,
+      };
+    case '[CART] Update Item':
+      return {
+        ...state,
+        items: [
+          ...state.items.filter(
+            ({ product }) => product.id !== action.payload.product.id
+          ),
+          ...[action.payload]
+        ],
       };
     default:
       return state;
