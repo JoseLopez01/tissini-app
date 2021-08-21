@@ -2,6 +2,7 @@ import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import { cartReducer } from './cart/cart.reducer';
 import { categoriesReducer } from './category/category.reducer';
+import { uiReducer } from './ui/ui.reducer';
 
 declare global {
   interface Window {
@@ -17,6 +18,7 @@ const composeEnhancers =
 const rootStore = combineReducers({
   category: categoriesReducer,
   cart: cartReducer,
+  ui: uiReducer,
 });
 
 export const store = createStore(
