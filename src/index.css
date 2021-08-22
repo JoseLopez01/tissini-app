@@ -1,3 +1,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.next-arrow::before, .slick-next::before, .slick-next {
+  font-family: "Font Awesome 5 Free" !important;
+  font-weight: 900 !important;
+  content: '\f054' !important;
+  color: #f06292 !important;
+  right: -10px !important;
+}
+
+.prev-arrow::before, .slick-prev::before, .slick-prev {
+  font-family: "Font Awesome 5 Free" !important;
+  font-weight: 900 !important;
+  content: '\f053' !important;
+  color: #f06292 !important;
+  left: -10px !important;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.slick-slide .rounded {
+  width: auto !important;
+}
+
+form.mt-1 input {
+  @apply outline-none border w-full p-3 rounded border-white bg-transparent placeholder-white font-medium text-white;
+}
