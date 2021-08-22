@@ -1,6 +1,7 @@
-import { useEffect } from 'react';
-import { ChangeEvent, useState } from 'react';
+import { useEffect, ChangeEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import MaskInput from 'react-maskinput';
+
 import { login } from '../../core/store/auth/auth.actions';
 
 export default function Login() {
@@ -8,12 +9,12 @@ export default function Login() {
   const [mobilePhone, setMobilePhone] = useState('');
 
   useEffect(() => {
-    if (mobilePhone.trim().length === 10) {
+    if (mobilePhone.trim().length === 12) {
       dispatch(login(mobilePhone));
     }
   }, [dispatch, mobilePhone]);
 
-  function handleOnChange({ target }: ChangeEvent<HTMLInputElement>) {
+  function handleOnChange({ target }: any) {
     setMobilePhone(target.value);
   }
 
@@ -26,12 +27,10 @@ export default function Login() {
             Ingresa el número de teléfono de tu asesora independiente.
           </div>
           <form className="mt-1">
-            <input
-              type="tel"
-              className="outline-none border w-full p-3 rounded border-white bg-transparent placeholder-white font-medium text-white"
-              placeholder="Teléfono"
+            <MaskInput
               onChange={handleOnChange}
-              value={mobilePhone}
+              maskChar=""
+              mask="000 000 0000"
             />
           </form>
         </div>

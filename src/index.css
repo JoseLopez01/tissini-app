@@ -33,3 +33,7 @@ input[type=number] {
 .slick-slide .rounded {
   width: auto !important;
 }
+
+form.mt-1 input {
+  @apply outline-none border w-full p-3 rounded border-white bg-transparent placeholder-white font-medium text-white;
+}
