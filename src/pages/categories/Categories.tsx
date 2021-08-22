@@ -28,7 +28,7 @@ export default function Categories() {
 
   return (
     <>
-      <div className="w-4/12 mx-auto p-2 relative">
+      <div className="md:w-4/12 mx-auto p-2 relative overflow-x-hidden">
         <CategoryHeader
           image="https://mitienda.moda/img/productos-de-entrega-inmediata.9ad72bec.jpg"
           showMore

@@ -14,14 +14,14 @@ export default function SectionSliderItem({ product }: SectionSliderItemProps) {
   }
 
   return (
-    <div className="shadow rounded">
+    <div className="shadow rounded w-44">
       <img
         src={`${BASE_URL}/${product.image.url}`}
         alt={product.name}
         className="rounded"
       />
       <div className="grid grid-cols-4 p-1">
-        <div className="text-lg font-bold col-span-4">{product.name}</div>
+        <div className="text-base font-bold col-span-4">{product.name}</div>
         <div className="uppercase text-sm col-span-4">
           {product.categories.category}
         </div>
