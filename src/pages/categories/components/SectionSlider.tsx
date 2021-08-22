@@ -18,7 +18,7 @@ export default function SectionSlider({ products }: SectionSliderProps) {
   return (
     <Slider {...settings}>
       {products.map((product) => (
-        <div className="rounded-lg p-1 relative" key={product.id}>
+        <div className="rounded-lg p-1" key={product.id} style={{ width: 'auto !important' }}>
           <SectionSliderItem product={product} />
         </div>
       ))}

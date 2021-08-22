@@ -22,12 +22,13 @@ export default function CartItem({
   }
 
   return (
-    <div className="rounded shadow">
+    <div className="rounded shadow my-1">
       <div className="mx-auto grid grid-cols-4">
-        <img
-          src={`${BASE_URL}/${product.image.url}`}
-          alt={product.name}
-          className="col-span-2"
+        <div
+          style={{
+            backgroundImage: `url(${BASE_URL}/${product.image.url})`
+          }}
+          className="col-span-2 bg-cover bg-no-repeat bg-center"
         />
         <div className="grid grid-cols-4 p-2 border-l col-span-2">
           <div className="text-lg font-bold col-span-2">{product.name}</div>
@@ -44,8 +45,12 @@ export default function CartItem({
             <span className="font-semibold">${product.price}</span>
           </div>
           <div className="col-span-4">
+            <span className="font-light">Cantidad:</span>{' '}
+            <span className="font-semibold">{quantity}</span>
+          </div>
+          <div className="col-span-4">
             <span className="text-lg font-bold text-red-400">
-              ${quantity * +variant.price}
+              ${(quantity * +variant.price).toFixed(2)}
             </span>
           </div>
           <div className="col-span-2">
